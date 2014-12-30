@@ -7,7 +7,7 @@ function author_link(event) {
 }
 
 function branch(event) {
-  return event.payload.ref.substring("refs/heads/", '');
+  return event.payload.ref.replace("refs/heads/", '');
 }
 
 function branch_link(event) {
@@ -19,7 +19,7 @@ function build_icon(icon_type) {
 }
 
 function fork_link(event) {
-  return event.repository.html_url;
+  return link(event.repository.html_url, repository(event.repository.html_url));
 }
 
 function human_readable(data) {
@@ -46,8 +46,20 @@ function gh_event(icon, text, timeago)
 }
 
 function gh_parse_CreateEvent(event) {
+  if(event.payload.ref_type == "repository")
+    return gh_parse_CreateEvent_repository(event);
+  return gh_parse_CreateEvent_tag(event);
+}
+
+function gh_parse_CreateEvent_repository(event) {
   return gh_event('octicon octicon-repo',
                   author_link(event) + " created repository " + repository_link(event),
+                  time_since(event));
+}
+
+function gh_parse_CreateEvent_tag(event) {
+  return gh_event('octicon octicon-tag',
+                  author_link(event) + " created tag " + tag_link(event) + " at " + repository_link(event),
                   time_since(event));
 }
 
@@ -128,6 +140,10 @@ function repository(url) {
 
 function repository_link(event) {
   return link(event.url, repository(event.url));
+}
+
+function tag_link(event) {
+  return link(event.url, event.payload.ref);
 }
 
 function time_since(event) {
