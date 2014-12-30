@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="bower_components/jquery-timeago/jquery.timeago.js"></script>
+  <script src="src/github-activity-feed.js"></script>
+  <script>
+    var gh = new GithubActivityFeed("andrewhood125");
+    gh.events.done(function(data) {
+      console.log(data);
+    });
+  </script>
+</body>
+</html>
