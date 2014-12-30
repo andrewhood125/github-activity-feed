@@ -3,8 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <title></title>
+  <link rel="stylesheet" href="bower_components/octicons/octicons/octicons.css"/>
 </head>
 <body>
+
+  <ul id="gh-events">
+  </ul>
 
   <script src="bower_components/jquery/dist/jquery.min.js"></script>
   <script src="bower_components/jquery-timeago/jquery.timeago.js"></script>
@@ -12,8 +16,20 @@
   <script>
     var gh = new GithubActivityFeed("andrewhood125");
     gh.events.done(function(data) {
-      console.log(data);
+      gh.events.done(function(events) {
+        for(var i = 0; i < events.length; i++) {
+          var li = build_list_item();
+          li.append(events[i].icon);
+          li.append(events[i].text);
+          li.append(events[i].timeago);
+          $('#gh-events').append(li);
+        }
+      });
     });
+
+    function build_list_item() {
+      return $("<li/>");
+    }
   </script>
 </body>
 </html>

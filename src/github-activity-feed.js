@@ -39,7 +39,7 @@ function human_readable(data) {
 function gh_event(icon, text, timeago)
 {
   return {
-    icon: icon,
+    icon: build_icon(icon),
     text: text,
     timeago: timeago
   };
@@ -95,8 +95,8 @@ function gh_parse_WatchEvent(event) {
 
 function gh_parse_UnknownEvent(event) {
   return {
-    icon: build_icon(''),
-    text: "",
+    icon: '',
+    text: '',
     timeago: time_since(event)
   };
 }
