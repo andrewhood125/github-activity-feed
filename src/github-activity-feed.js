@@ -11,7 +11,7 @@ function branch(event) {
 }
 
 function branch_link(event) {
-  return link(event.repository.url + "/" + branch(event), branch(event));
+  return link(event.repository.url + "/tree/" + branch(event), branch(event));
 }
 
 function build_icon(icon_type) {
