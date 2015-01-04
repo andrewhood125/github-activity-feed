@@ -39,81 +39,85 @@ function human_readable(data) {
   return events;
 }
 
-function gh_event(icon, text, timeago)
-{
+function gh_event(icon, text, timeago, at) {
   return {
     icon: build_icon(icon),
     text: text,
-    timeago: timeago
+    timeago: timeago,
+    at: at
   };
 }
 
 function gh_parse_CreateEvent(event) {
-  if(event.payload.ref_type == "repository")
+  if (event.payload.ref_type == "repository")
     return gh_parse_CreateEvent_repository(event);
   return gh_parse_CreateEvent_tag(event);
 }
 
 function gh_parse_CreateEvent_repository(event) {
   return gh_event('octicon octicon-repo',
-                  author_link(event) + " created repository " + repository_link(event),
-                  time_since(event));
+    author_link(event) + " created repository " + repository_link(event),
+    time_since(event),
+    event.created_at);
 }
 
 function gh_parse_CreateEvent_tag(event) {
   return gh_event('octicon octicon-tag',
-                  author_link(event) + " created tag " + tag_link(event) + " at " + repository_link(event),
-                  time_since(event));
+    author_link(event) + " created tag " + tag_link(event) + " at " + repository_link(event),
+    time_since(event),
+    event.created_at);
 }
 
 function gh_parse_ForkEvent(event) {
   return gh_event('octicon octicon-git-branch',
-                  author_link(event) + " forked " + fork_link(event) + " to " + repository_link(event),
-                  time_since(event));
+    author_link(event) + " forked " + fork_link(event) + " to " + repository_link(event),
+    time_since(event),
+    event.created_at);
 }
 
 function gh_parse_IssueCommentEvent(event) {
   return gh_event('mega-octicon octicon-comment-discussion',
-                  author_link(event) + " commened on pull request " + repository_link(event),
-                  time_since(event));
+    author_link(event) + " commened on pull request " + repository_link(event),
+    time_since(event),
+    event.created_at);
 }
 
 function gh_parse_IssuesEvent(event) {
-  if(event.payload.action == "opened")
+  if (event.payload.action == "opened")
     return gh_parse_IssuesEvent_opened(event);
   return gh_parse_IssuesEvent_closed(event);
 }
 
 function gh_parse_IssuesEvent_opened(event) {
   return gh_event('mega-octicon octicon-issue-opened',
-                  author_link(event) + " opened issue " + repository_link(event),
-                  time_since(event));
+    author_link(event) + " opened issue " + repository_link(event),
+    time_since(event),
+    event.created_at);
 }
 
 function gh_parse_IssuesEvent_closed(event) {
   return gh_event('mega-octicon octicon-issue-closed',
-                  author_link(event) + " closed issue " + repository_link(event),
-                  time_since(event));
+    author_link(event) + " closed issue " + repository_link(event),
+    time_since(event),
+    event.created_at);
 }
 
 function gh_parse_PushEvent(event) {
   return gh_event('mega-octicon octicon-git-commit',
-                  author_link(event) + " pushed to " + branch_link(event) + " at " + repository_link(event),
-                  time_since(event));
+    author_link(event) + " pushed to " + branch_link(event) + " at " + repository_link(event),
+    time_since(event),
+    event.created_at);
 }
 
 function gh_parse_WatchEvent(event) {
   return gh_event('octicon octicon-star',
-                      author_link(event) + " starred " + repository_link(event),
-                      time_since(event));
+    author_link(event) + " starred " + repository_link(event),
+    time_since(event),
+    event.created_at);
 }
 
 function gh_parse_UnknownEvent(event) {
-  return {
-    icon: '',
-    text: '',
-    timeago: time_since(event)
-  };
+  return gh_event('', 'Unknown Event', time_since(event), event.created_at);
 }
 
 function github_feed_url(username) {
@@ -126,19 +130,23 @@ function GithubActivityFeed(username) {
   self.user = $.Deferred();
   self.events = $.Deferred();
 
-  $.ajax({
-    url: github_feed_url(username),
-    dataType: "jsonp"
-  }).done(function(data) {
-    self.events.resolve(human_readable(data));
-  });
+  self.refresh = function() {
+    $.ajax({
+      url: github_feed_url(username),
+      dataType: "jsonp"
+    }).done(function(data) {
+      self.events.resolve(human_readable(data));
+    });
 
-  $.ajax({
-    url: api_prefix + "users/andrewhood125",
-    dataType: "jsonp",
-  }).done(function(data) {
-    self.user.resolve(data);
-  });
+    $.ajax({
+      url: api_prefix + "users/andrewhood125",
+      dataType: "jsonp",
+    }).done(function(data) {
+      self.user.resolve(data);
+    });
+  };
+
+  self.refresh();
 }
 
 function link(url, name) {
