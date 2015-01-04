@@ -1,3 +1,6 @@
+// Static settings
+jQuery.timeago.settings.allowFuture = true;
+
 function author(event) {
   return event.actor;
 }

@@ -26,6 +26,12 @@
         li.append(property + ": " + user.data[property]);
         $("#gh-user").append(li);
       }
+
+      for (property in user.meta) {
+        var li = build_list_item();
+        li.append(property + ": " + user.meta[property]);
+        $("#gh-user").append(li);
+      }
     });
 
     gh.events.done(function(events) {
