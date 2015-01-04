@@ -15,7 +15,7 @@ function branch_link(event) {
 }
 
 function build_icon(icon_type) {
-  return $("<span/>").addClass(icon_type);
+  return "<span class='" + icon_type + "'></span>";
 }
 
 function fork_link(event) {
@@ -118,8 +118,9 @@ function github_feed_url(username) {
 }
 
 function GithubActivityFeed(username) {
+  var api_prefix = "https://api.github.com/";
   var self = this;
-  self.username = username;
+  self.user = $.Deferred();
   self.events = $.Deferred();
 
   $.ajax({
@@ -127,6 +128,13 @@ function GithubActivityFeed(username) {
     dataType: "jsonp"
   }).done(function(data) {
     self.events.resolve(human_readable(data));
+  });
+
+  $.ajax({
+    url: api_prefix + "users/andrewhood125",
+    dataType: "jsonp",
+  }).done(function(data) {
+    self.user.resolve(data);
   });
 }
 

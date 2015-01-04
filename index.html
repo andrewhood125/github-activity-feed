@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title></title>
-  <link rel="stylesheet" href="bower_components/octicons/octicons/octicons.css"/>
+  <link rel="stylesheet" href="bower_components/octicons/octicons/octicons.css" />
 </head>
+
 <body>
 
+  <ul id="gh-user">
+  </ul>
   <ul id="gh-events">
   </ul>
 
@@ -15,16 +19,23 @@
   <script src="src/github-activity-feed.js"></script>
   <script>
     var gh = new GithubActivityFeed("andrewhood125");
-    gh.events.done(function(data) {
-      gh.events.done(function(events) {
-        for(var i = 0; i < events.length; i++) {
+
+    gh.user.done(function(user) {
+      for (property in user.data) {
+        var li = build_list_item();
+        li.append(property + ": " + user.data[property]);
+        $("#gh-user").append(li);
+      }
+    });
+
+    gh.events.done(function(events) {
+      for (var i = 0; i < events.length; i++) {
+        for (property in events[i]) {
           var li = build_list_item();
-          li.append(events[i].icon);
-          li.append(events[i].text);
-          li.append(events[i].timeago);
-          $('#gh-events').append(li);
+          li.append(property + ": " + events[i][property]);
+          $("#gh-user").append(li);
         }
-      });
+      }
     });
 
     function build_list_item() {
@@ -32,4 +43,5 @@
     }
   </script>
 </body>
+
 </html>
