@@ -68,6 +68,13 @@ function gh_parse_CreateEvent_tag(event) {
     event.created_at);
 }
 
+function gh_parse_DeleteEvent(event) {
+  return gh_event('octicon octicon-git-branch-delete',
+    author_link(event) + " deleted " + ref_type(event) + " " + event.payload.ref + " at " + fork_link(event),
+    time_since(event),
+    event.created_at);
+}
+
 function gh_parse_ForkEvent(event) {
   return gh_event('octicon octicon-git-branch',
     author_link(event) + " forked " + fork_link(event) + " to " + repository_link(event),
@@ -151,6 +158,10 @@ function GithubActivityFeed(username) {
 
 function link(url, name) {
   return "<a href='" + url + "'>" + name + "</a>";
+}
+
+function ref_type(event) {
+  return event.payload.ref_type;
 }
 
 function repository(url) {
