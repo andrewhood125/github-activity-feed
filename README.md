@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.org/andrewhood125/github-activity-feed.svg?branch=master)](https://travis-ci.org/andrewhood125/github-activity-feed)
+[![Coverage
+Status](https://coveralls.io/repos/andrewhood125/github-activity-feed/badge.png)](https://coveralls.io/r/andrewhood125/github-activity-feed)
+
 github-activity-feed
 ====================
 
