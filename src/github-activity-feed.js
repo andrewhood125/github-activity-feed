@@ -157,7 +157,6 @@ function human_readable(data) {
 
   for (var i = 0; i < data.length; i++) {
     var fn = window["gh_parse_" + data[i].type];
-    console.log(fn);
     if (typeof fn === "function")
       events[i] = fn(data[i]);
     else
