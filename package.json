@@ -1,6 +1,5 @@
 {
   "name": "github-activity-feed",
-  "version": "0.1.2",
   "description": "Get your GitHub public activity feed in a human readble format",
   "main": "src/github-activity-feed.js",
   "scripts": {
