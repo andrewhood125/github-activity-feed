@@ -1,42 +1,34 @@
 // Static settings
 jQuery.timeago.settings.allowFuture = true;
+var GITHUB_API_BASE_URL = "https://api.github.com/";
+var GITHUB_BASE_URL = "https://github.com/";
 
 function author(event) {
-  return event.actor;
+  return event.actor.login;
 }
 
 function author_link(event) {
-  return link("https://github.com/" + author(event), author(event));
+  return link(github_url(author(event)), author(event));
 }
 
-function branch(event) {
-  return event.payload.ref.replace("refs/heads/", '');
+function ref(payload) {
+  return payload.ref.replace("refs/heads/", '');
 }
 
-function branch_link(event) {
-  return link(event.repository.url + "/tree/" + branch(event), branch(event));
+function ref_link(event) {
+  return link(github_url(repository(event.repo) + "/tree/" + ref(event.payload)), ref(event.payload));
 }
 
 function build_icon(icon_type) {
   return "<span class='" + icon_type + "'></span>";
 }
 
-function fork_link(event) {
-  return link(event.repository.html_url, repository(event.repository.html_url));
+function convert_api_url(url) {
+  return github_url(remove_api_url(url));
 }
 
-function human_readable(data) {
-  var events = [];
-
-  for (var i = 0; i < data.length; i++) {
-    var fn = window["gh_parse_" + data[i].type];
-    if (typeof fn === "function")
-      events[i] = fn(data[i]);
-    else
-      events[i] = gh_parse_UnknownEvent(data[i]);
-  }
-
-  return events;
+function forkee_link(forkee) {
+  return link(github_url(forkee.full_name), forkee.full_name);
 }
 
 function gh_event(icon, text, timeago, at) {
@@ -63,21 +55,21 @@ function gh_parse_CreateEvent_repository(event) {
 
 function gh_parse_CreateEvent_tag(event) {
   return gh_event('octicon octicon-tag',
-    author_link(event) + " created tag " + tag_link(event) + " at " + repository_link(event),
+    author_link(event) + " created tag " + ref_link(event) + " at " + repository_link(event),
     time_since(event),
     event.created_at);
 }
 
 function gh_parse_DeleteEvent(event) {
   return gh_event('octicon octicon-git-branch-delete',
-    author_link(event) + " deleted " + ref_type(event) + " " + event.payload.ref + " at " + fork_link(event),
+    author_link(event) + " deleted " + ref_type(event.payload) + " " + ref(event.payload) + " at " + repository_link(event),
     time_since(event),
     event.created_at);
 }
 
 function gh_parse_ForkEvent(event) {
   return gh_event('octicon octicon-git-branch',
-    author_link(event) + " forked " + fork_link(event) + " to " + repository_link(event),
+    author_link(event) + " forked " + repository_link(event) + " to " + forkee_link(event.payload.forkee),
     time_since(event),
     event.created_at);
 }
@@ -111,7 +103,7 @@ function gh_parse_IssuesEvent_closed(event) {
 
 function gh_parse_PushEvent(event) {
   return gh_event('mega-octicon octicon-git-commit',
-    author_link(event) + " pushed to " + branch_link(event) + " at " + repository_link(event),
+    author_link(event) + " pushed to " + ref_link(event) + " at " + repository_link(event),
     time_since(event),
     event.created_at);
 }
@@ -127,53 +119,72 @@ function gh_parse_UnknownEvent(event) {
   return gh_event('', 'Unknown Event', time_since(event), event.created_at);
 }
 
-function github_feed_url(username) {
-  return "https://github.com/" + username + ".json";
-}
 
 function GithubActivityFeed(username) {
-  var api_prefix = "https://api.github.com/";
   var self = this;
   self.user = $.Deferred();
   self.events = $.Deferred();
 
   self.refresh = function() {
     $.ajax({
-      url: github_feed_url(username),
+      url: GITHUB_API_BASE_URL + "users/" + username + "/events",
       dataType: "jsonp"
-    }).done(function(data) {
-      self.events.resolve(human_readable(data));
+    }).done(function(events) {
+      self.events.resolve(human_readable(events.data));
+    }).error(function(data) {
+      console.log("Error retrieving events.");
     });
 
     $.ajax({
-      url: api_prefix + "users/andrewhood125",
+      url: GITHUB_API_BASE_URL + "users/andrewhood125",
       dataType: "jsonp",
     }).done(function(data) {
       self.user.resolve(data);
+    }).error(function(data) {
+      console.log("Error retrieving user.");
     });
   };
 
   self.refresh();
 }
 
+function github_url(resource) {
+  return GITHUB_BASE_URL + resource;
+}
+
+function human_readable(data) {
+  var events = [];
+
+  for (var i = 0; i < data.length; i++) {
+    var fn = window["gh_parse_" + data[i].type];
+    console.log(fn);
+    if (typeof fn === "function")
+      events[i] = fn(data[i]);
+    else
+      events[i] = gh_parse_UnknownEvent(data[i]);
+  }
+
+  return events;
+}
+
 function link(url, name) {
   return "<a href='" + url + "'>" + name + "</a>";
 }
 
-function ref_type(event) {
-  return event.payload.ref_type;
+function ref_type(payload) {
+  return payload.ref_type;
 }
 
-function repository(url) {
-  return truncate(url.replace('https://github.com/', ''));
+function remove_api_url(url) {
+  return url.replace(GITHUB_API_BASE_URL, '').replace("repos/", '');;
+}
+
+function repository(repo) {
+  return repo.name;
 }
 
 function repository_link(event) {
-  return link(event.url, repository(event.url));
-}
-
-function tag_link(event) {
-  return link(event.url, event.payload.ref);
+  return link(convert_api_url(event.repo.url), repository(event.repo));
 }
 
 function time_since(event) {
