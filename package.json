@@ -1,9 +1,10 @@
 {
   "name": "github-activity-feed",
-  "description": "Get your GitHub public activity feed in a human readble format",
+  "description": "Get your GitHub public activity feed in a human readable format",
   "main": "src/github-activity-feed.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "coveralls": "mocha --require blanket --reporter mocha-lcov-reporter | ./node_modules/coveralls/bin/coveralls.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,16 @@
   },
   "homepage": "https://github.com/andrewhood125/github-activity-feed",
   "devDependencies": {
+    "blanket": "^1.1.6",
     "mocha": "^2.1.0"
+  },
+  "dependencies": {
+    "coveralls": "^2.11.2",
+    "jquery": "^2.1.3"
+  },
+  "config": {
+    "blanket": {
+      "pattern": "src"
+    }
   }
 }
