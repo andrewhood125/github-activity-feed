@@ -23,8 +23,6 @@
     return link(github_url(forkee.full_name), forkee.full_name);
   }
 
-
-
   gh_event = function(icon, text, timeago, at) {
     return {
       icon: build_icon(icon),
