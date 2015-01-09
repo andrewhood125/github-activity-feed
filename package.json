@@ -3,8 +3,7 @@
   "description": "Get your GitHub public activity feed in a human readable format",
   "main": "src/github-activity-feed.js",
   "scripts": {
-    "test": "mocha",
-    "coveralls": "mocha --require blanket --reporter mocha-lcov-reporter | ./node_modules/coveralls/bin/coveralls.js"
+    "test": "mocha --require blanket --reporter mocha-lcov-reporter | ./node_modules/coveralls/bin/coveralls.js"
   },
   "repository": {
     "type": "git",
