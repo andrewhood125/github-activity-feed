@@ -3,7 +3,7 @@
   "description": "Get your GitHub public activity feed in a human readble format",
   "main": "src/github-activity-feed.js",
   "scripts": {
-    "test": "gulp test"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -18,8 +18,7 @@
     "url": "https://github.com/andrewhood125/github-activity-feed/issues"
   },
   "homepage": "https://github.com/andrewhood125/github-activity-feed",
-  "dependencies": {
-    "gulp": "^3.8.10",
-    "gulp-mocha": "^2.0.0"
+  "devDependencies": {
+    "mocha": "^2.1.0"
   }
 }
