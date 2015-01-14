@@ -1,6 +1,20 @@
 var assert = require("assert")
 var gaf = require('../src/github-activity-feed');
 
+var PullRequestEvent = {
+  payload: {
+    action: "closed",
+    pull_request: {
+      title: "Add a Gitter chat badge to README.md",
+      _links: {
+        html: {
+          href: "https://github.com/andrewhood125/github-activity-feed/pull/6"
+        }
+      }
+    }
+  }
+};
+
 var CreateEvent_tag = {
   id: 2502208575,
   type: "CreateEvent",
@@ -194,6 +208,19 @@ describe('GitHub Activity Feed', function() {
   describe('#link()', function() {
     it('should return html link for url and name', function() {
       assert.equal("<a href='andrew-hood.com'>Andrew Hood</a>", gaf.link('andrew-hood.com', 'Andrew Hood'));
+    });
+  });
+
+  describe('#pull_request_closed()', function() {
+    it('should return true if pull request was closed', function() {
+      assert.equal(true, gaf.pull_request_closed(PullRequestEvent.payload));
+    });
+  });
+
+  describe('#pull_request_link()', function() {
+    it('should return an html link to the pull request', function() {
+      assert.equal("<a href='https://github.com/andrewhood125/github-activity-feed/pull/6'>Add a Gitter chat badge to README.md</a>",
+        gaf.pull_request_link(PullRequestEvent.payload.pull_request));
     });
   });
 

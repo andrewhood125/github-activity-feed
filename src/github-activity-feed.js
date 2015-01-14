@@ -100,6 +100,25 @@
       event.created_at);
   }
 
+  gh_parse_PullRequestEvent = function(event) {
+    if (pull_request_closed(event.payload))
+      return gh_parse_PullRequestEvent_closed(event);
+    return gh_event('mega-octicon octicon-git-pull-request',
+      author_link(event) + action(event.payload) + " pull request " + pull_request_link(event.payload.pull_request),
+      time_since(event),
+      event.created_at);
+  }
+
+  gh_parse_PullRequestEvent_closed = function(event) {
+    var action = " closed ";
+    if(event.payload.pull_request.merged)
+      action = " merged ";
+    return gh_event('mega-octicon octicon-git-pull-request',
+      author_link(event) + action + "pull request " + pull_request_link(event.payload.pull_request),
+      time_since(event),
+      event.created_at);
+  }
+
   gh_parse_WatchEvent = function(event) {
     return gh_event('octicon octicon-star',
       author_link(event) + " starred " + repository_link(event),
@@ -162,6 +181,16 @@
     return "<a href='" + url + "'>" + name + "</a>";
   }
 
+  pull_request_closed = function(payload) {
+    if (payload.action === "closed")
+      return true;
+    return false;
+  }
+
+  pull_request_link = function(pull_request) {
+    return link(pull_request._links.html.href, pull_request.title);
+  }
+
   ref = function(payload) {
     return payload.ref.replace("refs/heads/", '');
   }
@@ -220,6 +249,8 @@
   global.github_url = github_url;
   global.human_readable = human_readable;
   global.link = link;
+  global.pull_request_closed = pull_request_closed;
+  global.pull_request_link = pull_request_link;
   global.ref = ref;
   global.ref_link = ref_link;
   global.ref_type = ref_type;
