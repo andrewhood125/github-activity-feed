@@ -5,6 +5,8 @@ Status](https://coveralls.io/repos/andrewhood125/github-activity-feed/badge.png)
 github-activity-feed
 ====================
 
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/andrewhood125/github-activity-feed?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Get your public activity feed in a human readble format.
 
 Useage
