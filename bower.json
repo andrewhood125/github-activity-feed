@@ -1,6 +1,7 @@
 {
   "name": "github-activity-feed",
   "version": "0.1.6",
+  "main": "src/github-activity-feed.js",
   "homepage": "https://github.com/andrewhood125/github-activity-feed",
   "authors": [
     "Andrew Hood <andrewhood125@gmail.com>"
