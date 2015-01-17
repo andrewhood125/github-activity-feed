@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Test &dot; github-activity-feed</title>
+
+  <!--mocha-->
+  <link rel="stylesheet" href="../node_modules/mocha/mocha.css" />
+</head>
+
+<body>
+  <div id="mocha"></div>
+
+  <!--github-activity-feed-->
+  <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="../bower_components/jquery-timeago/jquery.timeago.js"></script>
+  <script src="../src/github-activity-feed.js" data-cover></script>
+
+  <!--chai-->
+  <script src="../node_modules/chai/chai.js"></script>
+
+  <!--mocha-->
+  <script src="../node_modules/mocha/mocha.js"></script>
+
+  <!--blanket-->
+  <!--<script src="../node_modules/blanket/dist/mocha/blanket_mocha.js"></script>-->
+
+  <script>
+    mocha.setup('bdd');
+    assert = chai.assert;
+  </script>
+
+  <script src="../test/test.js"></script>
+  <script>
+    if (window.mochaPhantomJS) {
+      mochaPhantomJS.run();
+    } else {
+      mocha.run();
+    }
+  </script>
+
+</body>
+
+</html>
