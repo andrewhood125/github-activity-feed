@@ -1,6 +1,477 @@
-var PullRequestEvent={payload:{action:"closed",pull_request:{title:"Add a Gitter chat badge to README.md",_links:{html:{href:"https://github.com/andrewhood125/github-activity-feed/pull/6"}}}}};
-var CreateEvent_tag={id:2502208575,type:"CreateEvent",actor:{id:1624718,login:"andrewhood125",gravatar_id:"",url:"https://api.github.com/users/andrewhood125",avatar_url:"https://avatars.githubusercontent.com/u/1624718?"},repo:{id:28580238,name:"andrewhood125/github-activity-feed",url:"https://api.github.com/repos/andrewhood125/github-activity-feed"},payload:{ref:"0.1.4",ref_type:"tag",master_branch:"master",description:"Get your GitHub public activity feed in a human readble format",pusher_type:"user"},public:true,created_at:"2015-01-09T05:16:47Z"};
-var ForkEvent={id:"2485392581",type:"ForkEvent",actor:{id:1624718,login:"andrewhood125",gravatar_id:"",url:"https://api.github.com/users/andrewhood125",avatar_url:"https://avatars.githubusercontent.com/u/1624718?"},repo:{id:25402902,name:"mem-comp4081-2014fall/common-critic",url:"https://api.github.com/repos/mem-comp4081-2014fall/common-critic"},payload:{forkee:{id:28579266,name:"common-critic",full_name:"andrewhood125/common-critic",owner:{login:"andrewhood125",id:1624718,avatar_url:"https://avatars.githubusercontent.com/u/1624718?v=3",gravatar_id:"",url:"https://api.github.com/users/andrewhood125",html_url:"https://github.com/andrewhood125",followers_url:"https://api.github.com/users/andrewhood125/followers",following_url:"https://api.github.com/users/andrewhood125/following{/other_user}",gists_url:"https://api.github.com/users/andrewhood125/gists{/gist_id}",starred_url:"https://api.github.com/users/andrewhood125/starred{/owner}{/repo}",subscriptions_url:"https://api.github.com/users/andrewhood125/subscriptions",organizations_url:"https://api.github.com/users/andrewhood125/orgs",repos_url:"https://api.github.com/users/andrewhood125/repos",events_url:"https://api.github.com/users/andrewhood125/events{/privacy}",received_events_url:"https://api.github.com/users/andrewhood125/received_events",type:"User",site_admin:false},private:false,html_url:"https://github.com/andrewhood125/common-critic",description:"",fork:true,url:"https://api.github.com/repos/andrewhood125/common-critic",forks_url:"https://api.github.com/repos/andrewhood125/common-critic/forks",keys_url:"https://api.github.com/repos/andrewhood125/common-critic/keys{/key_id}",collaborators_url:"https://api.github.com/repos/andrewhood125/common-critic/collaborators{/collaborator}",teams_url:"https://api.github.com/repos/andrewhood125/common-critic/teams",hooks_url:"https://api.github.com/repos/andrewhood125/common-critic/hooks",issue_events_url:"https://api.github.com/repos/andrewhood125/common-critic/issues/events{/number}",events_url:"https://api.github.com/repos/andrewhood125/common-critic/events",assignees_url:"https://api.github.com/repos/andrewhood125/common-critic/assignees{/user}",branches_url:"https://api.github.com/repos/andrewhood125/common-critic/branches{/branch}",tags_url:"https://api.github.com/repos/andrewhood125/common-critic/tags",blobs_url:"https://api.github.com/repos/andrewhood125/common-critic/git/blobs{/sha}",git_tags_url:"https://api.github.com/repos/andrewhood125/common-critic/git/tags{/sha}",git_refs_url:"https://api.github.com/repos/andrewhood125/common-critic/git/refs{/sha}",trees_url:"https://api.github.com/repos/andrewhood125/common-critic/git/trees{/sha}",statuses_url:"https://api.github.com/repos/andrewhood125/common-critic/statuses/{sha}",languages_url:"https://api.github.com/repos/andrewhood125/common-critic/languages",stargazers_url:"https://api.github.com/repos/andrewhood125/common-critic/stargazers",contributors_url:"https://api.github.com/repos/andrewhood125/common-critic/contributors",subscribers_url:"https://api.github.com/repos/andrewhood125/common-critic/subscribers",subscription_url:"https://api.github.com/repos/andrewhood125/common-critic/subscription",commits_url:"https://api.github.com/repos/andrewhood125/common-critic/commits{/sha}",git_commits_url:"https://api.github.com/repos/andrewhood125/common-critic/git/commits{/sha}",comments_url:"https://api.github.com/repos/andrewhood125/common-critic/comments{/number}",issue_comment_url:"https://api.github.com/repos/andrewhood125/common-critic/issues/comments/{number}",contents_url:"https://api.github.com/repos/andrewhood125/common-critic/contents/{+path}",compare_url:"https://api.github.com/repos/andrewhood125/common-critic/compare/{base}...{head}",merges_url:"https://api.github.com/repos/andrewhood125/common-critic/merges",archive_url:"https://api.github.com/repos/andrewhood125/common-critic/{archive_format}{/ref}",downloads_url:"https://api.github.com/repos/andrewhood125/common-critic/downloads",issues_url:"https://api.github.com/repos/andrewhood125/common-critic/issues{/number}",pulls_url:"https://api.github.com/repos/andrewhood125/common-critic/pulls{/number}",milestones_url:"https://api.github.com/repos/andrewhood125/common-critic/milestones{/number}",notifications_url:"https://api.github.com/repos/andrewhood125/common-critic/notifications{?since,all,participating}",labels_url:"https://api.github.com/repos/andrewhood125/common-critic/labels{/name}",releases_url:"https://api.github.com/repos/andrewhood125/common-critic/releases{/id}",created_at:"2014-12-29T03:40:52Z",updated_at:"2014-12-11T21:04:52Z",pushed_at:"2014-12-11T19:18:17Z",git_url:"git://github.com/andrewhood125/common-critic.git",ssh_url:"git@github.com:andrewhood125/common-critic.git",clone_url:"https://github.com/andrewhood125/common-critic.git",svn_url:"https://github.com/andrewhood125/common-critic",homepage:null,size:1302,stargazers_count:0,watchers_count:0,language:null,has_issues:false,has_downloads:true,has_wiki:true,has_pages:false,forks_count:0,mirror_url:null,open_issues_count:0,forks:0,open_issues:0,watchers:0,default_branch:"master",public:true}},public:true,created_at:"2014-12-29T03:40:52Z",org:{id:7825611,login:"mem-comp4081-2014fall",gravatar_id:"",url:"https://api.github.com/orgs/mem-comp4081-2014fall",avatar_url:"https://avatars.githubusercontent.com/u/7825611?"}};
+var PullRequestEvent_closed = {
+  payload: {
+    action: "closed",
+    pull_request: {
+      title: "Add a Gitter chat badge to README.md",
+      _links: {
+        html: {
+          href: "https://github.com/andrewhood125/github-activity-feed/pull/6"
+        }
+      }
+    }
+  },
+  created_at: "2015-01-09T05:16:47Z"
+};
+
+var CreateEvent_tag = {
+  id: 2502208575,
+  type: "CreateEvent",
+  actor: {
+    id: 1624718,
+    login: "andrewhood125",
+    gravatar_id: "",
+    url: "https://api.github.com/users/andrewhood125",
+    avatar_url: "https://avatars.githubusercontent.com/u/1624718?"
+  },
+  repo: {
+    id: 28580238,
+    name: "andrewhood125/github-activity-feed",
+    url: "https://api.github.com/repos/andrewhood125/github-activity-feed"
+  },
+  payload: {
+    ref: "0.1.4",
+    ref_type: "tag",
+    master_branch: "master",
+    description: "Get your GitHub public activity feed in a human readble format",
+    pusher_type: "user"
+  },
+  public: true,
+  created_at: "2015-01-09T05:16:47Z"
+};
+var ForkEvent = {
+  id: "2485392581",
+  type: "ForkEvent",
+  actor: {
+    id: 1624718,
+    login: "andrewhood125",
+    gravatar_id: "",
+    url: "https://api.github.com/users/andrewhood125",
+    avatar_url: "https://avatars.githubusercontent.com/u/1624718?"
+  },
+  repo: {
+    id: 25402902,
+    name: "mem-comp4081-2014fall/common-critic",
+    url: "https://api.github.com/repos/mem-comp4081-2014fall/common-critic"
+  },
+  payload: {
+    forkee: {
+      id: 28579266,
+      name: "common-critic",
+      full_name: "andrewhood125/common-critic",
+      owner: {
+        login: "andrewhood125",
+        id: 1624718,
+        avatar_url: "https://avatars.githubusercontent.com/u/1624718?v=3",
+        gravatar_id: "",
+        url: "https://api.github.com/users/andrewhood125",
+        html_url: "https://github.com/andrewhood125",
+        followers_url: "https://api.github.com/users/andrewhood125/followers",
+        following_url: "https://api.github.com/users/andrewhood125/following{/other_user}",
+        gists_url: "https://api.github.com/users/andrewhood125/gists{/gist_id}",
+        starred_url: "https://api.github.com/users/andrewhood125/starred{/owner}{/repo}",
+        subscriptions_url: "https://api.github.com/users/andrewhood125/subscriptions",
+        organizations_url: "https://api.github.com/users/andrewhood125/orgs",
+        repos_url: "https://api.github.com/users/andrewhood125/repos",
+        events_url: "https://api.github.com/users/andrewhood125/events{/privacy}",
+        received_events_url: "https://api.github.com/users/andrewhood125/received_events",
+        type: "User",
+        site_admin: false
+      },
+      private: false,
+      html_url: "https://github.com/andrewhood125/common-critic",
+      description: "",
+      fork: true,
+      url: "https://api.github.com/repos/andrewhood125/common-critic",
+      forks_url: "https://api.github.com/repos/andrewhood125/common-critic/forks",
+      keys_url: "https://api.github.com/repos/andrewhood125/common-critic/keys{/key_id}",
+      collaborators_url: "https://api.github.com/repos/andrewhood125/common-critic/collaborators{/collaborator}",
+      teams_url: "https://api.github.com/repos/andrewhood125/common-critic/teams",
+      hooks_url: "https://api.github.com/repos/andrewhood125/common-critic/hooks",
+      issue_events_url: "https://api.github.com/repos/andrewhood125/common-critic/issues/events{/number}",
+      events_url: "https://api.github.com/repos/andrewhood125/common-critic/events",
+      assignees_url: "https://api.github.com/repos/andrewhood125/common-critic/assignees{/user}",
+      branches_url: "https://api.github.com/repos/andrewhood125/common-critic/branches{/branch}",
+      tags_url: "https://api.github.com/repos/andrewhood125/common-critic/tags",
+      blobs_url: "https://api.github.com/repos/andrewhood125/common-critic/git/blobs{/sha}",
+      git_tags_url: "https://api.github.com/repos/andrewhood125/common-critic/git/tags{/sha}",
+      git_refs_url: "https://api.github.com/repos/andrewhood125/common-critic/git/refs{/sha}",
+      trees_url: "https://api.github.com/repos/andrewhood125/common-critic/git/trees{/sha}",
+      statuses_url: "https://api.github.com/repos/andrewhood125/common-critic/statuses/{sha}",
+      languages_url: "https://api.github.com/repos/andrewhood125/common-critic/languages",
+      stargazers_url: "https://api.github.com/repos/andrewhood125/common-critic/stargazers",
+      contributors_url: "https://api.github.com/repos/andrewhood125/common-critic/contributors",
+      subscribers_url: "https://api.github.com/repos/andrewhood125/common-critic/subscribers",
+      subscription_url: "https://api.github.com/repos/andrewhood125/common-critic/subscription",
+      commits_url: "https://api.github.com/repos/andrewhood125/common-critic/commits{/sha}",
+      git_commits_url: "https://api.github.com/repos/andrewhood125/common-critic/git/commits{/sha}",
+      comments_url: "https://api.github.com/repos/andrewhood125/common-critic/comments{/number}",
+      issue_comment_url: "https://api.github.com/repos/andrewhood125/common-critic/issues/comments/{number}",
+      contents_url: "https://api.github.com/repos/andrewhood125/common-critic/contents/{+path}",
+      compare_url: "https://api.github.com/repos/andrewhood125/common-critic/compare/{base}...{head}",
+      merges_url: "https://api.github.com/repos/andrewhood125/common-critic/merges",
+      archive_url: "https://api.github.com/repos/andrewhood125/common-critic/{archive_format}{/ref}",
+      downloads_url: "https://api.github.com/repos/andrewhood125/common-critic/downloads",
+      issues_url: "https://api.github.com/repos/andrewhood125/common-critic/issues{/number}",
+      pulls_url: "https://api.github.com/repos/andrewhood125/common-critic/pulls{/number}",
+      milestones_url: "https://api.github.com/repos/andrewhood125/common-critic/milestones{/number}",
+      notifications_url: "https://api.github.com/repos/andrewhood125/common-critic/notifications{?since,all,participating}",
+      labels_url: "https://api.github.com/repos/andrewhood125/common-critic/labels{/name}",
+      releases_url: "https://api.github.com/repos/andrewhood125/common-critic/releases{/id}",
+      created_at: "2014-12-29T03:40:52Z",
+      updated_at: "2014-12-11T21:04:52Z",
+      pushed_at: "2014-12-11T19:18:17Z",
+      git_url: "git://github.com/andrewhood125/common-critic.git",
+      ssh_url: "git@github.com:andrewhood125/common-critic.git",
+      clone_url: "https://github.com/andrewhood125/common-critic.git",
+      svn_url: "https://github.com/andrewhood125/common-critic",
+      homepage: null,
+      size: 1302,
+      stargazers_count: 0,
+      watchers_count: 0,
+      language: null,
+      has_issues: false,
+      has_downloads: true,
+      has_wiki: true,
+      has_pages: false,
+      forks_count: 0,
+      mirror_url: null,
+      open_issues_count: 0,
+      forks: 0,
+      open_issues: 0,
+      watchers: 0,
+      default_branch: "master",
+      public: true
+    }
+  },
+  public: true,
+  created_at: "2014-12-29T03:40:52Z",
+  org: {
+    id: 7825611,
+    login: "mem-comp4081-2014fall",
+    gravatar_id: "",
+    url: "https://api.github.com/orgs/mem-comp4081-2014fall",
+    avatar_url: "https://avatars.githubusercontent.com/u/7825611?"
+  }
+};
+
+var IssueCommentEvent = {
+  "id": "2519627422",
+  "type": "IssueCommentEvent",
+  "actor": {
+    "id": 1624718,
+    "login": "andrewhood125",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/andrewhood125",
+    "avatar_url": "https://avatars.githubusercontent.com/u/1624718?"
+  },
+  "repo": {
+    "id": 11777372,
+    "name": "ModelN/grunt-blanket-mocha",
+    "url": "https://api.github.com/repos/ModelN/grunt-blanket-mocha"
+  },
+  "payload": {
+    "action": "created",
+    "issue": {
+      "url": "https://api.github.com/repos/ModelN/grunt-blanket-mocha/issues/14",
+      "labels_url": "https://api.github.com/repos/ModelN/grunt-blanket-mocha/issues/14/labels{/name}",
+      "comments_url": "https://api.github.com/repos/ModelN/grunt-blanket-mocha/issues/14/comments",
+      "events_url": "https://api.github.com/repos/ModelN/grunt-blanket-mocha/issues/14/events",
+      "html_url": "https://github.com/ModelN/grunt-blanket-mocha/issues/14",
+      "id": 26637365,
+      "number": 14,
+      "title": "Support File Output of Coverage Results",
+      "user": {
+        "login": "billmag",
+        "id": 909245,
+        "avatar_url": "https://avatars.githubusercontent.com/u/909245?v=3",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/billmag",
+        "html_url": "https://github.com/billmag",
+        "followers_url": "https://api.github.com/users/billmag/followers",
+        "following_url": "https://api.github.com/users/billmag/following{/other_user}",
+        "gists_url": "https://api.github.com/users/billmag/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/billmag/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/billmag/subscriptions",
+        "organizations_url": "https://api.github.com/users/billmag/orgs",
+        "repos_url": "https://api.github.com/users/billmag/repos",
+        "events_url": "https://api.github.com/users/billmag/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/billmag/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "labels": [{
+        "url": "https://api.github.com/repos/ModelN/grunt-blanket-mocha/labels/enhancement",
+        "name": "enhancement",
+        "color": "84b6eb"
+      }],
+      "state": "open",
+      "locked": false,
+      "assignee": null,
+      "milestone": null,
+      "comments": 9,
+      "created_at": "2014-01-30T21:45:09Z",
+      "updated_at": "2015-01-18T04:21:38Z",
+      "closed_at": null,
+      "body": "As a next step to incorporating grunt-blanket-mocha into my build, I'd like to be able to easily output the coverage results into a file in a format that's somehow digestible by Jenkins. There are a number of options out there and I'm personally not very informed on the landscape of reporting options, but this would be pretty fantastic functionality to add."
+    },
+    "comment": {
+      "url": "https://api.github.com/repos/ModelN/grunt-blanket-mocha/issues/comments/70396016",
+      "html_url": "https://github.com/ModelN/grunt-blanket-mocha/issues/14#issuecomment-70396016",
+      "issue_url": "https://api.github.com/repos/ModelN/grunt-blanket-mocha/issues/14",
+      "id": 70396016,
+      "user": {
+        "login": "andrewhood125",
+        "id": 1624718,
+        "avatar_url": "https://avatars.githubusercontent.com/u/1624718?v=3",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/andrewhood125",
+        "html_url": "https://github.com/andrewhood125",
+        "followers_url": "https://api.github.com/users/andrewhood125/followers",
+        "following_url": "https://api.github.com/users/andrewhood125/following{/other_user}",
+        "gists_url": "https://api.github.com/users/andrewhood125/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/andrewhood125/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/andrewhood125/subscriptions",
+        "organizations_url": "https://api.github.com/users/andrewhood125/orgs",
+        "repos_url": "https://api.github.com/users/andrewhood125/repos",
+        "events_url": "https://api.github.com/users/andrewhood125/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/andrewhood125/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "created_at": "2015-01-18T04:21:38Z",
+      "updated_at": "2015-01-18T04:21:38Z",
+      "body": ":+1: "
+    }
+  },
+  "public": true,
+  "created_at": "2015-01-18T04:21:38Z",
+  "org": {
+    "id": 1382842,
+    "login": "ModelN",
+    "gravatar_id": "",
+    "url": "https://api.github.com/orgs/ModelN",
+    "avatar_url": "https://avatars.githubusercontent.com/u/1382842?"
+  }
+};
+
+var PushEvent = {
+  "id": "2519359882",
+  "type": "PushEvent",
+  "actor": {
+    "id": 1624718,
+    "login": "andrewhood125",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/andrewhood125",
+    "avatar_url": "https://avatars.githubusercontent.com/u/1624718?"
+  },
+  "repo": {
+    "id": 28580238,
+    "name": "andrewhood125/github-activity-feed",
+    "url": "https://api.github.com/repos/andrewhood125/github-activity-feed"
+  },
+  "payload": {
+    "push_id": 549128076,
+    "size": 1,
+    "distinct_size": 1,
+    "ref": "refs/heads/master",
+    "head": "314c6538d452f609bececc9169683c2b44c19d80",
+    "before": "7c814d7e6c3c475ded5ce1862d1fc51c9dac570b",
+    "commits": [{
+      "sha": "314c6538d452f609bececc9169683c2b44c19d80",
+      "author": {
+        "email": "andrewhood125@gmail.com",
+        "name": "Andrew Hood"
+      },
+      "message": "Release 0.1.7",
+      "distinct": true,
+      "url": "https://api.github.com/repos/andrewhood125/github-activity-feed/commits/314c6538d452f609bececc9169683c2b44c19d80"
+    }]
+  },
+  "public": true,
+  "created_at": "2015-01-17T20:18:13Z"
+};
+
+var IssuesEvent_opened = {
+  "id": "2519350590",
+  "type": "IssuesEvent",
+  "actor": {
+    "id": 1624718,
+    "login": "andrewhood125",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/andrewhood125",
+    "avatar_url": "https://avatars.githubusercontent.com/u/1624718?"
+  },
+  "repo": {
+    "id": 5614368,
+    "name": "metaskills/mocha-phantomjs",
+    "url": "https://api.github.com/repos/metaskills/mocha-phantomjs"
+  },
+  "payload": {
+    "action": "opened",
+    "issue": {
+      "url": "https://api.github.com/repos/metaskills/mocha-phantomjs/issues/172",
+      "labels_url": "https://api.github.com/repos/metaskills/mocha-phantomjs/issues/172/labels{/name}",
+      "comments_url": "https://api.github.com/repos/metaskills/mocha-phantomjs/issues/172/comments",
+      "events_url": "https://api.github.com/repos/metaskills/mocha-phantomjs/issues/172/events",
+      "html_url": "https://github.com/metaskills/mocha-phantomjs/issues/172",
+      "id": 54673310,
+      "number": 172,
+      "title": "Add documentation for coverage",
+      "user": {
+        "login": "andrewhood125",
+        "id": 1624718,
+        "avatar_url": "https://avatars.githubusercontent.com/u/1624718?v=3",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/andrewhood125",
+        "html_url": "https://github.com/andrewhood125",
+        "followers_url": "https://api.github.com/users/andrewhood125/followers",
+        "following_url": "https://api.github.com/users/andrewhood125/following{/other_user}",
+        "gists_url": "https://api.github.com/users/andrewhood125/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/andrewhood125/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/andrewhood125/subscriptions",
+        "organizations_url": "https://api.github.com/users/andrewhood125/orgs",
+        "repos_url": "https://api.github.com/users/andrewhood125/repos",
+        "events_url": "https://api.github.com/users/andrewhood125/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/andrewhood125/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "labels": [],
+      "state": "open",
+      "locked": false,
+      "assignee": null,
+      "milestone": null,
+      "comments": 0,
+      "created_at": "2015-01-17T20:04:24Z",
+      "updated_at": "2015-01-17T20:04:24Z",
+      "closed_at": null,
+      "body": "Awesome package! I've been in Javascript testing hell for the past week or so. Long story short I wrote my first javascript package and I'm trying to get it hooked into Travis and Coveralls. I was able to use Mocha from the cli but I couldn't cover anything that used jQuery in my code. If I went to a browser based solution I couldn't run from the cli. \r\n\r\nEnter mocha-phantomjs. It's exactly what I needed. I'm having trouble figuring out how I can hook into blanket or Istanbul though to produce coverage info for coveralls. I'd like to lend a hand and help out here. I'm going to dig in and try and figure out how to incorporate them but I'd appreciate any advice if someone has already solved this problem. "
+    }
+  },
+  "public": true,
+  "created_at": "2015-01-17T20:04:25Z"
+};
+
+var WatchEvent = {
+  "id": "2518872912",
+  "type": "WatchEvent",
+  "actor": {
+    "id": 1624718,
+    "login": "andrewhood125",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/andrewhood125",
+    "avatar_url": "https://avatars.githubusercontent.com/u/1624718?"
+  },
+  "repo": {
+    "id": 5614368,
+    "name": "metaskills/mocha-phantomjs",
+    "url": "https://api.github.com/repos/metaskills/mocha-phantomjs"
+  },
+  "payload": {
+    "action": "started"
+  },
+  "public": true,
+  "created_at": "2015-01-17T05:38:07Z"
+};
+
+var CreateEvent_repository = {
+  "id": "2511341838",
+  "type": "CreateEvent",
+  "actor": {
+    "id": 1624718,
+    "login": "andrewhood125",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/andrewhood125",
+    "avatar_url": "https://avatars.githubusercontent.com/u/1624718?"
+  },
+  "repo": {
+    "id": 29230414,
+    "name": "andrewhood125/happy-new-year",
+    "url": "https://api.github.com/repos/andrewhood125/happy-new-year"
+  },
+  "payload": {
+    "ref": null,
+    "ref_type": "repository",
+    "master_branch": "master",
+    "description": "",
+    "pusher_type": "user"
+  },
+  "public": true,
+  "created_at": "2015-01-14T06:20:35Z"
+};
+
+var IssuesEvent_closed = {
+  "id": "2504860717",
+  "type": "IssuesEvent",
+  "actor": {
+    "id": 1624718,
+    "login": "andrewhood125",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/andrewhood125",
+    "avatar_url": "https://avatars.githubusercontent.com/u/1624718?"
+  },
+  "repo": {
+    "id": 13914256,
+    "name": "andrewhood125/andrewhood125.github.io",
+    "url": "https://api.github.com/repos/andrewhood125/andrewhood125.github.io"
+  },
+  "payload": {
+    "action": "closed",
+    "issue": {
+      "url": "https://api.github.com/repos/andrewhood125/andrewhood125.github.io/issues/4",
+      "labels_url": "https://api.github.com/repos/andrewhood125/andrewhood125.github.io/issues/4/labels{/name}",
+      "comments_url": "https://api.github.com/repos/andrewhood125/andrewhood125.github.io/issues/4/comments",
+      "events_url": "https://api.github.com/repos/andrewhood125/andrewhood125.github.io/issues/4/events",
+      "html_url": "https://github.com/andrewhood125/andrewhood125.github.io/issues/4",
+      "id": 53473275,
+      "number": 4,
+      "title": "Icons uniform width so all left justified text is in a single column",
+      "user": {
+        "login": "andrewhood125",
+        "id": 1624718,
+        "avatar_url": "https://avatars.githubusercontent.com/u/1624718?v=3",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/andrewhood125",
+        "html_url": "https://github.com/andrewhood125",
+        "followers_url": "https://api.github.com/users/andrewhood125/followers",
+        "following_url": "https://api.github.com/users/andrewhood125/following{/other_user}",
+        "gists_url": "https://api.github.com/users/andrewhood125/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/andrewhood125/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/andrewhood125/subscriptions",
+        "organizations_url": "https://api.github.com/users/andrewhood125/orgs",
+        "repos_url": "https://api.github.com/users/andrewhood125/repos",
+        "events_url": "https://api.github.com/users/andrewhood125/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/andrewhood125/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "labels": [],
+      "state": "closed",
+      "locked": false,
+      "assignee": null,
+      "milestone": null,
+      "comments": 1,
+      "created_at": "2015-01-06T02:19:00Z",
+      "updated_at": "2015-01-10T19:12:00Z",
+      "closed_at": "2015-01-10T19:12:00Z",
+      "body": ""
+    }
+  },
+  "public": true,
+  "created_at": "2015-01-10T19:12:01Z"
+};
+
+var data = [
+  PullRequestEvent_closed,
+  CreateEvent_tag,
+  ForkEvent,
+  IssueCommentEvent,
+  PushEvent,
+  IssuesEvent_opened,
+  WatchEvent,
+  CreateEvent_repository,
+  IssuesEvent_closed
+];
 
 describe('GitHub Activity Feed', function() {
 
@@ -51,6 +522,12 @@ describe('GitHub Activity Feed', function() {
     });
   });
 
+  describe('#human_readable()', function() {
+    it('should return an array of events', function() {
+      assert.equal(data.length, new GithubActivityFeed("andrewhood125").human_readable(data).length);
+    });
+  });
+
   describe('#link()', function() {
     it('should return html link for url and name', function() {
       assert.equal("<a href='andrew-hood.com'>Andrew Hood</a>", new GithubActivityFeed("andrewhood125").link('andrew-hood.com', 'Andrew Hood'));
@@ -59,14 +536,14 @@ describe('GitHub Activity Feed', function() {
 
   describe('#pull_request_closed()', function() {
     it('should return true if pull request was closed', function() {
-      assert.equal(true, new GithubActivityFeed("andrewhood125").pull_request_closed(PullRequestEvent.payload));
+      assert.equal(true, new GithubActivityFeed("andrewhood125").pull_request_closed(PullRequestEvent_closed.payload));
     });
   });
 
   describe('#pull_request_link()', function() {
     it('should return an html link to the pull request', function() {
       assert.equal("<a href='https://github.com/andrewhood125/github-activity-feed/pull/6'>Add a Gitter chat badge to README.md</a>",
-        new GithubActivityFeed("andrewhood125").pull_request_link(PullRequestEvent.payload.pull_request));
+        new GithubActivityFeed("andrewhood125").pull_request_link(PullRequestEvent_closed.payload.pull_request));
     });
   });
 

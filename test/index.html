@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Test &dot; github-activity-feed</title>
+  <title>Test &sect; github-activity-feed</title>
 
   <!--mocha-->
   <link rel="stylesheet" href="../node_modules/mocha/mocha.css" />
@@ -24,21 +24,29 @@
   <script src="../node_modules/mocha/mocha.js"></script>
 
   <!--blanket-->
-  <!--<script src="../node_modules/blanket/dist/mocha/blanket_mocha.js"></script>-->
+  <script src="../node_modules/blanket/dist/mocha/blanket_mocha.js"></script>
 
   <script>
+    window.assert = chai.assert;
     mocha.setup('bdd');
-    assert = chai.assert;
   </script>
 
+  <!--tests-->
   <script src="../test/test.js"></script>
+
   <script>
-    if (window.mochaPhantomJS) {
-      mochaPhantomJS.run();
-    } else {
-      mocha.run();
+    mocha.run();
+  </script>
+
+  <!--report coverage to grunt-->
+  <script>
+    if (window.PHANTOMJS) {
+      blanket.options("reporter", "../node_modules/grunt-blanket-mocha/support/grunt-reporter.js");
     }
   </script>
+
+  <!--show blanket report in browser-->
+  <script type="text/javascript" src="../node_modules/grunt-blanket-mocha/support/mocha-blanket.js"></script>
 
 </body>
 

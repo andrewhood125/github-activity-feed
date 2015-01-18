@@ -85,7 +85,7 @@
 
     self.gh_parse_ForkEvent = function(event) {
       return self.gh_event('octicon octicon-git-branch',
-        self.author_link(event) + " forked " + self.repository_link(event) + " to " + forkee_link(event.payload.forkee),
+        self.author_link(event) + " forked " + self.repository_link(event) + " to " + self.forkee_link(event.payload.forkee),
         self.time_since(event),
         event.created_at);
     }

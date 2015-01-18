@@ -3,7 +3,7 @@
   "description": "Get your GitHub public activity feed in a human readable format",
   "main": "src/github-activity-feed.js",
   "scripts": {
-    "test": "mocha-phantomjs test/index.html"
+    "test": "grunt"
   },
   "repository": {
     "type": "git",
@@ -21,8 +21,8 @@
   "devDependencies": {
     "blanket": "^1.1.6",
     "chai": "^1.10.0",
-    "mocha": "^2.1.0",
-    "mocha-phantomjs": "^3.5.3"
+    "grunt-blanket-mocha": "^0.4.1",
+    "mocha": "^2.1.0"
   },
   "config": {
     "blanket": {
