@@ -1317,35 +1317,35 @@ describe('GitHub Activity Feed', function() {
 
   describe('#resolve_events()', function() {
     it('should set events to rejected when rate limit is exceeded', function() {
-      var gh = new GithubActivityFeed("andrewhood125");
-      gh.resolve_events(RateLimitExceeded, 200);
-      gh.events.state(function(state) {
-        assert.equal("rejected", state);
-      });
+      new GithubActivityFeed("andrewhood125")
+        .resolve_events(RateLimitExceeded, 403)
+        .state(function(state) {
+          assert.equal("rejected", state);
+        });
     });
     it('should set events to rejected if status is not 200', function() {
-      var gh = new GithubActivityFeed("andrewhood125");
-      gh.resolve_events(RateLimitNotExceeded, 300);
-      gh.events.state(function(state) {
-        assert.equal("rejected", state);
-      });
+      new GithubActivityFeed("andrewhood125")
+        .resolve_events(RateLimitNotExceeded, 300)
+        .state(function(state) {
+          assert.equal("rejected", state);
+        });
     });
   });
 
   describe('#resolve_user()', function() {
     it('should set user to rejected when rate limit is exceeded', function() {
-      var gh = new GithubActivityFeed("andrewhood125");
-      gh.resolve_events(RateLimitExceeded, 200);
-      gh.user.state(function(state) {
-        assert.equal("rejected", state);
-      });
+      new GithubActivityFeed("andrewhood125")
+        .resolve_events(RateLimitExceeded, 403)
+        .state(function(state) {
+          assert.equal("rejected", state);
+        });
     });
     it('should set user to rejected if status is not 200', function() {
-      var gh = new GithubActivityFeed("andrewhood125");
-      gh.resolve_user(RateLimitNotExceeded, 300);
-      gh.user.state(function(state) {
-        assert.equal("rejected", state);
-      });
+      new GithubActivityFeed("andrewhood125")
+        .resolve_user(RateLimitNotExceeded, 300)
+        .state(function(state) {
+          assert.equal("rejected", state);
+        });
 
     });
   });

@@ -225,7 +225,7 @@
             message: "Failed to retrieve events info from GitHub"
           }
         });
-      self.events.resolve({
+      return self.events.resolve({
         meta: events.meta,
         data: self.human_readable(events.data)
       });
@@ -243,7 +243,7 @@
             message: "Failed to retrieve user info from GitHub"
           }
         });
-      self.user.resolve(user);
+      return self.user.resolve(user);
     }
 
     self.time_since = function(event) {
