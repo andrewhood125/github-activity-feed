@@ -3,7 +3,7 @@
   var GITHUB_API_BASE_URL = "https://api.github.com/";
   var GITHUB_BASE_URL = "https://github.com/";
 
-  var GithubActivityFeed = function(username) {
+  global.GithubActivityFeed = function(username) {
     var self = this;
 
     self.user = $.Deferred();
@@ -219,7 +219,5 @@
       return string.substring(0, 50) + "...";
     }
   }
-
-  global.GithubActivityFeed = GithubActivityFeed;
 
 }(this));
