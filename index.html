@@ -34,6 +34,10 @@
       }
     });
 
+    gh.user.fail(function(user) {
+      alert(user.data.message);
+    });
+
     gh.events.done(function(events) {
       for (var i = 0; i < events.length; i++) {
         for (property in events[i]) {
@@ -42,6 +46,10 @@
           $("#gh-events").append(li);
         }
       }
+    });
+
+    gh.events.fail(function(events) {
+      alert(events.data.message);
     });
 
     function build_list_item() {
