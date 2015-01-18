@@ -80,6 +80,18 @@ gh.user.done(function(user) {
 ````
 ---
 
+#### Handling Failure
+If for some reason user or events can't resolve correctly then they will fail. In that case you can access a message like so.
+````
+gh.user.fail(function(user) {
+	alert(user.data.message);
+});
+
+gh.events.fail(function(events) {
+	alert(events.data.message);
+});
+````
+
 Tests and Coverage
 ------------------
 #### npm
