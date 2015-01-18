@@ -128,7 +128,7 @@
       if (self.pull_request_closed(event.payload))
         return self.gh_parse_PullRequestEvent_closed(event);
       return self.gh_event('mega-octicon octicon-git-pull-request',
-        self.author_link(event) + self.action(event.payload) + " pull request " + self.pull_request_link(event.payload.pull_request),
+        self.author_link(event) + " " + self.action(event.payload) + " pull request " + self.pull_request_link(event.payload.pull_request),
         self.time_since(event),
         event.created_at);
     }
