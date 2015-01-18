@@ -216,8 +216,8 @@
 
     self.resolve_events = function(events, status) {
       if (self.rate_limit_exceeded(events.meta)) {
+        events.data.message += "\nRate limit reset " + self.time_until_api_refresh(events.meta);
         self.events.reject(events);
-        events.data.message += self.time_until_api_refresh(events.meta);
       }
       if (status != 200)
         self.events.reject({
@@ -234,8 +234,8 @@
 
     self.resolve_user = function(user, status) {
       if (self.rate_limit_exceeded(user.meta)) {
+        user.data.message += "\nRate limit reset " + self.time_until_api_refresh(user.meta);
         self.user.reject(user);
-        user.data.message += self.time_until_api_refresh(user.meta);
       }
       if (status != 200)
         self.user.reject({
