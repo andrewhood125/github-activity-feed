@@ -215,21 +215,28 @@
     }
 
     self.resolve_events = function(events, status) {
-      if (self.rate_limit_exceeded(events.meta))
+      if (self.rate_limit_exceeded(events.meta)) {
         self.events.reject(events);
+        events.data.message += self.time_until_api_refresh(events.meta);
+      }
       if (status != 200)
         self.events.reject({
           data: {
             message: "Failed to retrieve events info from GitHub"
           }
         });
-      self.events.resolve(self.human_readable(events.data));
+      self.events.resolve({
+        meta: events.meta,
+        data: self.human_readable(events.data)
+      });
     }
 
 
     self.resolve_user = function(user, status) {
-      if (self.rate_limit_exceeded(user.meta))
+      if (self.rate_limit_exceeded(user.meta)) {
         self.user.reject(user);
+        user.data.message += self.time_until_api_refresh(user.meta);
+      }
       if (status != 200)
         self.user.reject({
           data: {
@@ -240,7 +247,12 @@
     }
 
     self.time_since = function(event) {
-      return "<span class='timeago'> " + $.timeago(event.created_at) + "</span>";
+      return "<span class='timeago'> " + moment(event.created_at).fromNow() + "</span>";
+    }
+
+    self.time_until_api_refresh = function(meta) {
+      var epoch = 1000 * parseInt(meta['X-RateLimit-Reset']);
+      return moment(epoch).fromNow();
     }
 
     self.truncate = function(string) {

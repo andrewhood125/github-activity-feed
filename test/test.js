@@ -10,7 +10,7 @@ var PullRequestEvent_closed = {
       }
     }
   },
-  created_at: "2015-01-09T05:16:47Z"
+  created_at: new Date()
 };
 
 var CreateEvent_tag = {
@@ -1318,15 +1318,15 @@ describe('GitHub Activity Feed', function() {
   describe('#resolve_events()', function() {
     it('should set events to rejected when rate limit is exceeded', function() {
       var gh = new GithubActivityFeed("andrewhood125");
-      gh.resolve_user(RateLimitExceeded, 200);
-      gh.user.state(function(state) {
+      gh.resolve_events(RateLimitExceeded, 200);
+      gh.events.state(function(state) {
         assert.equal("rejected", state);
       });
     });
     it('should set events to rejected if status is not 200', function() {
       var gh = new GithubActivityFeed("andrewhood125");
-      gh.resolve_user(RateLimitNotExceeded, 300);
-      gh.user.state(function(state) {
+      gh.resolve_events(RateLimitNotExceeded, 300);
+      gh.events.state(function(state) {
         assert.equal("rejected", state);
       });
     });
@@ -1336,7 +1336,7 @@ describe('GitHub Activity Feed', function() {
     it('should set user to rejected when rate limit is exceeded', function() {
       var gh = new GithubActivityFeed("andrewhood125");
       gh.resolve_events(RateLimitExceeded, 200);
-      gh.events.state(function(state) {
+      gh.user.state(function(state) {
         assert.equal("rejected", state);
       });
     });
@@ -1347,6 +1347,18 @@ describe('GitHub Activity Feed', function() {
         assert.equal("rejected", state);
       });
 
+    });
+  });
+
+  describe('#time_since()', function() {
+    it('should return a span with the time since the event', function() {
+      assert.equal("<span class='timeago'> a few seconds ago</span>", new GithubActivityFeed("andrewhood125").time_since(PullRequestEvent_closed));
+    });
+  });
+
+  describe('#time_until_api_refresh()', function() {
+    it('should say how long until the api limit resets', function() {
+      assert.equal('a few seconds ago', new GithubActivityFeed("andrewhood125").time_until_api_refresh(RateLimitExceeded));
     });
   });
 

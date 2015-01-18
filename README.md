@@ -22,10 +22,10 @@ page
 ````html
 <link rel="stylesheet" href="bower_components/octicons/octicons/octicons.css" />
 ````
-make sure that jquery, timeago and github-activity-feed are loaded.
+make sure that jquery, moment.js and github-activity-feed are loaded.
 ````html
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
-<script src="bower_components/jquery-timeago/jquery.timeago.js"></script>
+<script src="bower_components/moment/min/moment.min.js"></script>
 <script src="bower_components/github-activity-feed/src/github-activity-feed.js"></script>
 ````
 
@@ -37,30 +37,30 @@ Now you are ready to get your hooman readble activity!
 GithubActivityFeed has two public api points to make things as easy as
 possible. `gh.events` and `gh.user` are both [jQuery
 $.Deferred()](http://api.jquery.com/jquery.deferred/) objects.
- 
+
 ---
 
 ####`gh.events` example
 
 ````javascript
 gh.events.done(function(events) {
-  
-  // The GitHub headers and some other 
-  // interesting things live in here. 
-  console.log(events.meta); 
-  
-  // Array of your events
-  console.log(events.data);
-  
-});
+
+    // The GitHub headers and some other
+    // interesting things live in here.
+    console.log(events.meta);
+
+    // Array of your events
+    console.log(events.data);
+
+    });
 ````
 
 #### A single events structure
 ````
 {
-  	icon: '<span class="mega-octicon octicon-git-commit"></span>',
-  	text: '<a href="https://github.com/andrewhood125">andrewhood125</a> created tag <a href="https://github.com/andrewhood125/github-activity-feed/tree/0.1.6">0.1.6</a> at <a href="https://github.com/andrewhood125/github-activity-feed">andrewhood125/github-activity-feed</a>',
-  	timeago: '<span class="timeago"> about 22 hours ago</span>'
+	icon: '<span class="mega-octicon octicon-git-commit"></span>',
+    text: '<a href="https://github.com/andrewhood125">andrewhood125</a> created tag <a href="https://github.com/andrewhood125/github-activity-feed/tree/0.1.6">0.1.6</a> at <a href="https://github.com/andrewhood125/github-activity-feed">andrewhood125/github-activity-feed</a>',
+    timeago: '<span class="timeago"> about 22 hours ago</span>'
 }
 ````
 ---
@@ -69,9 +69,9 @@ gh.events.done(function(events) {
 
 ````javascript
 gh.user.done(function(user) {
-  // Same as events above 
-  console.log(events.meta); 
-  
+  // Same as events above
+  console.log(events.meta);
+
   // Lots of stuff about you!
   // Open up index.html and you'll see
   // the entire list
@@ -84,19 +84,20 @@ gh.user.done(function(user) {
 If for some reason user or events can't resolve correctly then they will fail. In that case you can access a message like so.
 ````
 gh.user.fail(function(user) {
-	alert(user.data.message);
+  alert(user.data.message);
 });
 
 gh.events.fail(function(events) {
-	alert(events.data.message);
+  alert(events.data.message);
 });
 ````
 
 Tests and Coverage
 ------------------
 #### npm
-[npm](https://npmjs.org/) is used for the dev dependencies. I'm using mocha for testing with blanket for coverage, and grunt to run it all. 
+[npm](https://npmjs.org/) is used for the dev dependencies. I'm using mocha for testing with blanket for coverage, and grunt to run it all.
 
 `npm install`  
 `npm install -g grunt-cli`  
-`grunt`
+`grunt`  
+  
