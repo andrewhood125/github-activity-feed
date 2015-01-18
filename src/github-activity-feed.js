@@ -1,20 +1,23 @@
 (function(global) {
 
-  var GITHUB_API_BASE_URL = "https://api.github.com/";
-  var GITHUB_BASE_URL = "https://github.com/";
+    var GITHUB_API_BASE_URL = "https://api.github.com/";
+    var GITHUB_BASE_URL = "https://github.com/";
 
-  global.GithubActivityFeed = function(username) {
-    var self = this;
+    global.GithubActivityFeed = function(username) {
+      var self = this;
 
-    self.user = $.Deferred();
-    self.events = $.Deferred();
+      self.user = $.Deferred();
+      self.events = $.Deferred();
 
-    $.ajax({
-      url: GITHUB_API_BASE_URL + "users/" + username + "/events",
-      dataType: "jsonp"
-    }).done(function(events) {
-      self.events.resolve(self.human_readable(events.data));
-    }).error(function(data) {
+      $.ajax({
+        url: GITHUB_API_BASE_URL + "users/" + username + "/events",
+        dataType: "jsonp"
+      }).done(function(events) {
+          self.events.resolve({
+            meta: events.meta,
+            data: self.human_readable(events.data)
+          });
+      }).error(function(data) {
       console.log("Error retrieving events.");
     });
 

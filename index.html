@@ -21,24 +21,31 @@
     var gh = new GithubActivityFeed("andrewhood125");
 
     gh.user.done(function(user) {
-      for (property in user.data) {
-        var li = build_list_item();
-        li.append(property + ": " + user.data[property]);
-        $("#gh-user").append(li);
-      }
-
       for (property in user.meta) {
         var li = build_list_item();
         li.append(property + ": " + user.meta[property]);
         $("#gh-user").append(li);
       }
+
+      for (property in user.data) {
+        var li = build_list_item();
+        li.append(property + ": " + user.data[property]);
+        $("#gh-user").append(li);
+      }
     });
 
     gh.events.done(function(events) {
-      for (var i = 0; i < events.length; i++) {
-        for (property in events[i]) {
+      for (property in events.meta) {
+        var li = build_list_item();
+        li.append(property + ": " + events.meta[property]);
+        $("#gh-events").append(li);
+      }
+
+
+      for (var i = 0; i < events.data.length; i++) {
+        for (property in events.data[i]) {
           var li = build_list_item();
-          li.append(property + ": " + events[i][property]);
+          li.append(property + ": " + events.data[i][property]);
           $("#gh-events").append(li);
         }
       }
