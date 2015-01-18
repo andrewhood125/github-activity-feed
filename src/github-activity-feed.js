@@ -1,34 +1,31 @@
 (function(global) {
 
-    var GITHUB_API_BASE_URL = "https://api.github.com/";
-    var GITHUB_BASE_URL = "https://github.com/";
+  var GITHUB_API_BASE_URL = "https://api.github.com/";
+  var GITHUB_BASE_URL = "https://github.com/";
 
-    global.GithubActivityFeed = function(username) {
-      var self = this;
+  global.GithubActivityFeed = function(username) {
+    var self = this;
 
-      self.user = $.Deferred();
-      self.events = $.Deferred();
+    self.user = $.Deferred();
+    self.events = $.Deferred();
 
-      $.ajax({
-        url: GITHUB_API_BASE_URL + "users/" + username + "/events",
-        dataType: "jsonp"
-      }).done(function(events) {
-          self.events.resolve({
-            meta: events.meta,
-            data: self.human_readable(events.data)
-          });
-      }).error(function(data) {
-      console.log("Error retrieving events.");
+    $.ajax({
+      url: GITHUB_API_BASE_URL + "users/" + username + "/events",
+      dataType: "jsonp"
+    }).done(function(events, status, jqXHR) {
+      self.resolve_events(events, jqXHR.status);
     });
 
     $.ajax({
       url: GITHUB_API_BASE_URL + "users/" + username,
       dataType: "jsonp",
-    }).done(function(data) {
-      self.user.resolve(data);
-    }).error(function(data) {
-      console.log("Error retrieving user.");
+    }).done(function(data, status, jqXHR) {
+      self.resolve_user(data, jqXHR.status);
     });
+
+    self.action = function(payload) {
+      return payload.action;
+    }
 
     self.author = function(event) {
       return event.actor.login;
@@ -131,7 +128,7 @@
       if (self.pull_request_closed(event.payload))
         return self.gh_parse_PullRequestEvent_closed(event);
       return self.gh_event('mega-octicon octicon-git-pull-request',
-        self.author_link(event) + action(event.payload) + " pull request " + self.pull_request_link(event.payload.pull_request),
+        self.author_link(event) + self.action(event.payload) + " pull request " + self.pull_request_link(event.payload.pull_request),
         self.time_since(event),
         event.created_at);
     }
@@ -187,6 +184,12 @@
       return self.link(pull_request._links.html.href, pull_request.title);
     }
 
+    self.rate_limit_exceeded = function(meta) {
+      if (meta["X-RateLimit-Remaining"] == "0")
+        return true;
+      return false;
+    }
+
     self.ref = function(payload) {
       return payload.ref.replace("refs/heads/", '');
     }
@@ -209,6 +212,31 @@
 
     self.repository_link = function(event) {
       return self.link(self.convert_api_url(event.repo.url), self.repository(event.repo));
+    }
+
+    self.resolve_events = function(events, status) {
+      if (self.rate_limit_exceeded(events.meta))
+        self.events.reject(events);
+      if (status != 200)
+        self.events.reject({
+          data: {
+            message: "Failed to retrieve events info from GitHub"
+          }
+        });
+      self.events.resolve(self.human_readable(events.data));
+    }
+
+
+    self.resolve_user = function(user, status) {
+      if (self.rate_limit_exceeded(user.meta))
+        self.user.reject(user);
+      if (status != 200)
+        self.user.reject({
+          data: {
+            message: "Failed to retrieve user info from GitHub"
+          }
+        });
+      self.user.resolve(user);
     }
 
     self.time_since = function(event) {
