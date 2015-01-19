@@ -39,6 +39,7 @@
     });
 
     gh.events.done(function(events) {
+      console.log(events);
       for (property in events.meta) {
         var li = build_list_item();
         li.append(property + ": " + events.meta[property]);
@@ -49,7 +50,16 @@
       for (var i = 0; i < events.data.length; i++) {
         for (property in events.data[i]) {
           var li = build_list_item();
-          li.append(property + ": " + events.data[i][property]);
+          if (typeof events.data[i]["details"] !== 'undefined' && property == "details") {
+            var ul = $("<ul/>");
+            li.append("details:");
+            for (var j = 0; j < events.data[i]["details"].length; j++) {
+              ul.append(build_list_item().append(events.data[i][property][j]));
+            }
+            li.append(ul);
+          } else {
+            li.append(property + ": " + events.data[i][property]);
+          }
           $("#gh-events").append(li);
         }
       }

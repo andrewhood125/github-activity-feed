@@ -23,6 +23,10 @@
       self.resolve_user(data, jqXHR.status);
     });
 
+    self.abbr_sha = function(sha) {
+      return self.truncate(sha, 6, false);
+    }
+
     self.action = function(payload) {
       return payload.action;
     }
@@ -43,15 +47,26 @@
       return self.github_url(self.remove_api_url(url));
     }
 
+    self.details_PushEvent = function(event) {
+      var details = [];
+      for (var i = 0; i < event.payload.commits.length; i++) {
+        var commit = event.payload.commits[i];
+        details.push(
+          self.link(self.convert_api_url(commit.url), self.abbr_sha(commit.sha)) + " " + self.truncate(commit.message));
+      }
+      return details;
+    }
+
     self.forkee_link = function(forkee) {
       return self.link(self.github_url(forkee.full_name), forkee.full_name);
     }
 
-    self.gh_event = function(icon, text, event) {
+    self.gh_event = function(icon, text, event, details) {
       return {
         icon: self.build_icon(icon),
         text: text,
-        timeago: self.time_since(event)
+        timeago: self.time_since(event),
+        details: details
       };
     }
 
@@ -112,7 +127,8 @@
     self.gh_parse_PushEvent = function(event) {
       return self.gh_event('mega-octicon octicon-git-commit',
         self.author_link(event) + " pushed to " + self.ref_link(event) + " at " + self.repository_link(event),
-        event);
+        event,
+        self.details_PushEvent(event));
     }
 
     self.gh_parse_PullRequestEvent = function(event) {
@@ -243,11 +259,15 @@
       return moment(epoch).fromNow();
     }
 
-    self.truncate = function(string) {
-      var max_length = 50;
-      if (string.length < max_length)
-        return string;
-      return string.substring(0, 50) + "...";
+    self.truncate = function(string, length, dots) {
+      var length = typeof length !== 'undefined' ? length : 50;
+      var dots = typeof dots !== 'undefined' ? dots : string.length > length;
+      var short_string = string;
+      if (string.length > length)
+        short_string = string.substring(0, length);
+      if (dots)
+        short_string += "...";
+      return short_string;
     }
   }
 
