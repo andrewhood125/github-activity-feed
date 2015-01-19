@@ -13,6 +13,14 @@ var PullRequestEvent_closed = {
   created_at: new Date()
 };
 
+var EatAKitKatEvent = {
+  type: "EatAKitKatEvent",
+  payload: {
+    action: "chew",
+  },
+  created_at: new Date()
+};
+
 var CreateEvent_tag = {
   id: 2502208575,
   type: "CreateEvent",
@@ -1166,7 +1174,8 @@ var data = [
   IssuesEvent_closed,
   DeleteEvent,
   PullRequestEvent_merged,
-  PullRequestEvent_opened
+  PullRequestEvent_opened,
+  EatAKitKatEvent
 ];
 
 
@@ -1240,11 +1249,10 @@ describe('GitHub Activity Feed', function() {
 
   describe('#gh_event()', function() {
     it('should return a single event object', function() {
-      var e = new GithubActivityFeed("andrewhood125").gh_event('commit', 'star', '5 days', '12pm');
+      var e = new GithubActivityFeed("andrewhood125").gh_event('commit', 'star', PullRequestEvent_closed);
       assert.equal("<span class='commit'></span>", e.icon);
       assert.equal('star', e.text);
-      assert.equal('5 days', e.timeago);
-      assert.equal('12pm', e.at);
+      assert.equal("<span class='timeago'> a few seconds ago</span>", e.timeago);
     });
   });
 
