@@ -60,7 +60,11 @@ gh.events.done(function(events) {
 {
 	icon: '<span class="mega-octicon octicon-git-commit"></span>',
     text: '<a href="https://github.com/andrewhood125">andrewhood125</a> created tag <a href="https://github.com/andrewhood125/github-activity-feed/tree/0.1.6">0.1.6</a> at <a href="https://github.com/andrewhood125/github-activity-feed">andrewhood125/github-activity-feed</a>',
-    timeago: '<span class="timeago"> about 22 hours ago</span>'
+    timeago: '<span class="timeago"> about 22 hours ago</span>',
+    details: [
+    	'Not all event types have details.',
+    	'If not then -- details: undefined'
+    ]
 }
 ````
 ---
