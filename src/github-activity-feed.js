@@ -47,6 +47,18 @@
       return self.github_url(self.remove_api_url(url));
     }
 
+    self.details_IssuesEvent = function(event) {
+      var details = [];
+      details.push(event.payload.issue.title);
+      return details;
+    }
+
+    self.details_PullRequestEvent = function(event) {
+      var details = [];
+      details.push(event.payload.pull_request.title);
+      return details;
+    }
+
     self.details_PushEvent = function(event) {
       var details = [];
       for (var i = 0; i < event.payload.commits.length; i++) {
@@ -115,13 +127,15 @@
     self.gh_parse_IssuesEvent_opened = function(event) {
       return self.gh_event('mega-octicon octicon-issue-opened',
         self.author_link(event) + " opened issue " + self.repository_link(event),
-        event);
+        event,
+        self.details_IssuesEvent(event));
     }
 
     self.gh_parse_IssuesEvent_closed = function(event) {
       return self.gh_event('mega-octicon octicon-issue-closed',
         self.author_link(event) + " closed issue " + self.repository_link(event),
-        event);
+        event,
+        self.details_IssuesEvent(event));
     }
 
     self.gh_parse_PushEvent = function(event) {
@@ -136,7 +150,8 @@
         return self.gh_parse_PullRequestEvent_closed(event);
       return self.gh_event('mega-octicon octicon-git-pull-request',
         self.author_link(event) + " " + self.action(event.payload) + " pull request " + self.pull_request_link(event.payload.pull_request),
-        event);
+        event,
+        self.details_PullRequestEvent(event));
     }
 
     self.gh_parse_PullRequestEvent_closed = function(event) {
@@ -145,7 +160,8 @@
         action = " merged ";
       return self.gh_event('mega-octicon octicon-git-pull-request',
         self.author_link(event) + action + "pull request " + self.pull_request_link(event.payload.pull_request),
-        event);
+        event,
+        self.details_PullRequestEvent(event));
     }
 
     self.gh_parse_WatchEvent = function(event) {

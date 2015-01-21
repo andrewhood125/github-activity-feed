@@ -50,7 +50,7 @@
       for (var i = 0; i < events.data.length; i++) {
         for (property in events.data[i]) {
           var li = build_list_item();
-          if (typeof events.data[i]["details"] !== 'undefined' && property == "details") {
+          if (property == "details" && typeof events.data[i]["details"] !== 'undefined') {
             var ul = $("<ul/>");
             li.append("details:");
             for (var j = 0; j < events.data[i]["details"].length; j++) {
