@@ -47,6 +47,12 @@
       return self.github_url(self.remove_api_url(url));
     }
 
+    self.details_IssueCommentEvent = function(event) {
+      var details  = [];
+      details.push(event.payload.comment.body);
+      return details;
+    }
+
     self.details_IssuesEvent = function(event) {
       var details = [];
       details.push(event.payload.issue.title);
@@ -115,7 +121,8 @@
     self.gh_parse_IssueCommentEvent = function(event) {
       return self.gh_event('mega-octicon octicon-comment-discussion',
         self.author_link(event) + " commened on pull request " + self.repository_link(event),
-        event);
+        event,
+        self.details_IssueCommentEvent(event));
     }
 
     self.gh_parse_IssuesEvent = function(event) {
