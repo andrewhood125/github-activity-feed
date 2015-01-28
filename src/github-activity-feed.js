@@ -138,7 +138,7 @@
     };
 
     self.gh_parse_MemberEvent = function(event) {
-      return self.gh_event('',
+      return self.gh_event('octicon octicon-organization',
         self.author_link(event) + self.pad(self.action(event.payload)) + self.member_link(event.payload.member) + self.pad("to") + self.repository_link(event),
         event);
     };
