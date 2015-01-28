@@ -127,22 +127,12 @@
     };
 
     self.gh_parse_IssuesEvent = function(event) {
+      var action = "closed";
       if (event.payload.action === "opened") {
-        return self.gh_parse_IssuesEvent_opened(event);
+        action = "opened";
       }
-      return self.gh_parse_IssuesEvent_closed(event);
-    };
-
-    self.gh_parse_IssuesEvent_opened = function(event) {
-      return self.gh_event('mega-octicon octicon-issue-opened',
-        self.author_link(event) + " opened issue " + self.repository_link(event),
-        event,
-        self.details_IssuesEvent(event));
-    };
-
-    self.gh_parse_IssuesEvent_closed = function(event) {
-      return self.gh_event('mega-octicon octicon-issue-closed',
-        self.author_link(event) + " closed issue " + self.repository_link(event),
+      return self.gh_event('mega-octicon octicon-issue-' + action,
+        self.author_link(event) + " " + action + " issue " + self.repository_link(event),
         event,
         self.details_IssuesEvent(event));
     };
