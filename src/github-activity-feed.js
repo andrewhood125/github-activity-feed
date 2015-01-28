@@ -139,7 +139,7 @@
 
     self.gh_parse_MemberEvent = function(event) {
       return self.gh_event('',
-        self.author_link(event) + self.pad(self.action(event.payload)) + self.member(event.payload.member),
+        self.author_link(event) + self.pad(self.action(event.payload)) + self.member_link(event.payload.member) + self.pad("to") + self.repository_link(event),
         event);
     };
 
@@ -200,6 +200,14 @@
 
     self.link = function(url, name) {
       return "<a href='" + url + "'>" + name + "</a>";
+    };
+
+    self.member = function(member) {
+      return member.login;
+    };
+
+    self.member_link = function(member) {
+      return self.user_link(self.member(member));
     };
 
     self.pad = function(string) {
@@ -307,6 +315,11 @@
       }
       return short_string;
     };
+
+    self.user_link = function(user) {
+      return self.link(GITHUB_BASE_URL + user, user);
+    };
+
   };
 
 }(this));
