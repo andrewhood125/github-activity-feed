@@ -137,6 +137,12 @@
         self.details_IssuesEvent(event));
     };
 
+    self.gh_parse_MemberEvent = function(event) {
+      return self.gh_event('',
+        self.author_link(event) + self.pad(self.action(event.payload)) + self.member(event.payload.member),
+        event);
+    };
+
     self.gh_parse_PushEvent = function(event) {
       return self.gh_event('mega-octicon octicon-git-commit',
         self.author_link(event) + " pushed to " + self.ref_link(event) + " at " + self.repository_link(event),
@@ -196,6 +202,10 @@
       return "<a href='" + url + "'>" + name + "</a>";
     };
 
+    self.pad = function(string) {
+      return " " + string + " ";
+    };
+
     self.pull_request_closed = function(payload) {
       if (payload.action === "closed") {
         return true;
@@ -227,7 +237,7 @@
     };
 
     self.reject_rate_exceeded = function(call) {
-      call.data.message += "\nRate limit reset " +  self.time_until_api_refresh(call.meta);
+      call.data.message += "\nRate limit reset " + self.time_until_api_refresh(call.meta);
     };
 
     self.remove_api_url = function remove_api_url(url) {
