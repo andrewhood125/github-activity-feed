@@ -236,6 +236,10 @@
       return payload.ref_type;
     };
 
+    self.reject_rate_exceeded = function(call) {
+      call.data.message += "\nRate limit reset " +  self.time_until_api_refresh(call.meta);
+    };
+
     self.remove_api_url = function remove_api_url(url) {
       return url.replace(GITHUB_API_BASE_URL, '').replace("repos/", '');
     };
@@ -250,7 +254,7 @@
 
     self.resolve_events = function(events, status) {
       if (self.rate_limit_exceeded(events.meta)) {
-        events.data.message += "\nRate limit reset " + self.time_until_api_refresh(events.meta);
+        self.reject_rate_exceeded(events);
         self.events.reject(events);
       }
       if (status !== 200) {
@@ -269,7 +273,7 @@
 
     self.resolve_user = function(user, status) {
       if (self.rate_limit_exceeded(user.meta)) {
-        user.data.message += "\nRate limit reset " + self.time_until_api_refresh(user.meta);
+        self.reject_rate_exceeded(user);
         self.user.reject(user);
       }
       if (status !== 200) {
@@ -303,6 +307,6 @@
       }
       return short_string;
     };
-  }
+  };
 
 }(this));
