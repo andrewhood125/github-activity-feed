@@ -48,7 +48,7 @@
     };
 
     self.details_IssueCommentEvent = function(event) {
-      var details  = [];
+      var details = [];
       details.push(event.payload.comment.body);
       return details;
     };
@@ -89,8 +89,9 @@
     };
 
     self.gh_parse_CreateEvent = function(event) {
-      if (event.payload.ref_type == "repository")
+      if (event.payload.ref_type === "repository") {
         return self.gh_parse_CreateEvent_repository(event);
+      }
       return self.gh_parse_CreateEvent_tag(event);
     };
 
@@ -126,8 +127,9 @@
     };
 
     self.gh_parse_IssuesEvent = function(event) {
-      if (event.payload.action == "opened")
+      if (event.payload.action === "opened") {
         return self.gh_parse_IssuesEvent_opened(event);
+      }
       return self.gh_parse_IssuesEvent_closed(event);
     };
 
@@ -153,8 +155,9 @@
     };
 
     self.gh_parse_PullRequestEvent = function(event) {
-      if (self.pull_request_closed(event.payload))
+      if (self.pull_request_closed(event.payload)) {
         return self.gh_parse_PullRequestEvent_closed(event);
+      }
       return self.gh_event('mega-octicon octicon-git-pull-request',
         self.author_link(event) + " " + self.action(event.payload) + " pull request " + self.pull_request_link(event.payload.pull_request),
         event,
@@ -163,8 +166,9 @@
 
     self.gh_parse_PullRequestEvent_closed = function(event) {
       var action = " closed ";
-      if (event.payload.pull_request.merged)
+      if (event.payload.pull_request.merged) {
         action = " merged ";
+      }
       return self.gh_event('mega-octicon octicon-git-pull-request',
         self.author_link(event) + action + "pull request " + self.pull_request_link(event.payload.pull_request),
         event,
@@ -189,10 +193,11 @@
       var events = [];
       for (var i = 0; i < data.length; i++) {
         var fn = self["gh_parse_" + data[i].type];
-        if (typeof fn === "function")
+        if (typeof fn === "function") {
           events[i] = fn(data[i]);
-        else
+        } else {
           events[i] = self.gh_parse_UnknownEvent(data[i]);
+        }
       }
       return events;
     };
@@ -202,8 +207,9 @@
     };
 
     self.pull_request_closed = function(payload) {
-      if (payload.action === "closed")
+      if (payload.action === "closed") {
         return true;
+      }
       return false;
     };
 
@@ -212,8 +218,9 @@
     };
 
     self.rate_limit_exceeded = function(meta) {
-      if (meta["X-RateLimit-Remaining"] == "0")
+      if (meta["X-RateLimit-Remaining"] === "0") {
         return true;
+      }
       return false;
     };
 
@@ -230,7 +237,7 @@
     };
 
     self.remove_api_url = function remove_api_url(url) {
-      return url.replace(GITHUB_API_BASE_URL, '').replace("repos/", '');;
+      return url.replace(GITHUB_API_BASE_URL, '').replace("repos/", '');
     };
 
     self.repository = function(repo) {
@@ -246,12 +253,13 @@
         events.data.message += "\nRate limit reset " + self.time_until_api_refresh(events.meta);
         self.events.reject(events);
       }
-      if (status != 200)
+      if (status !== 200) {
         self.events.reject({
           data: {
             message: "Failed to retrieve events info from GitHub"
           }
         });
+      }
       return self.events.resolve({
         meta: events.meta,
         data: self.human_readable(events.data)
@@ -264,12 +272,13 @@
         user.data.message += "\nRate limit reset " + self.time_until_api_refresh(user.meta);
         self.user.reject(user);
       }
-      if (status != 200)
+      if (status !== 200) {
         self.user.reject({
           data: {
             message: "Failed to retrieve user info from GitHub"
           }
         });
+      }
       return self.user.resolve(user);
     };
 
@@ -283,15 +292,17 @@
     };
 
     self.truncate = function(string, length, dots) {
-      var length = typeof length !== 'undefined' ? length : 50;
-      var dots = typeof dots !== 'undefined' ? dots : string.length > length;
+      length = typeof length !== 'undefined' ? length : 50;
+      dots = typeof dots !== 'undefined' ? dots : string.length > length;
       var short_string = string;
-      if (string.length > length)
+      if (string.length > length) {
         short_string = string.substring(0, length);
-      if (dots)
+      }
+      if (dots) {
         short_string += "...";
+      }
       return short_string;
-    }
-  };
+    };
+  }
 
 }(this));
