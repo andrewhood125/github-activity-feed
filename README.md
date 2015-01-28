@@ -4,6 +4,8 @@ github-activity-feed
 
 [![Build Status](https://travis-ci.org/andrewhood125/github-activity-feed.svg?branch=master)](https://travis-ci.org/andrewhood125/github-activity-feed)
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/andrewhood125/github-activity-feed?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Code
+Climate](https://codeclimate.com/github/andrewhood125/github-activity-feed/badges/gpa.svg)](https://codeclimate.com/github/andrewhood125/github-activity-feed)
 
 Get your public activity feed in a human readble format.
 
