@@ -43,6 +43,10 @@
       return "<span class='" + icon_type + "'></span>";
     };
 
+    self.commit_comment_url = function(comment) {
+      return comment.html_url;
+    };
+
     self.convert_api_url = function(url) {
       return self.github_url(self.remove_api_url(url));
     };
@@ -86,6 +90,13 @@
         timeago: self.time_since(event),
         details: details
       };
+    };
+
+    self.gh_parse_CommitCommentEvent = function(event) {
+      return self.gh_event('mega-octicon octicon-comment-discussion',
+        self.author_link(event) + self.pad("commented on commit") + self.link(self.commit_comment_url(event.payload.comment), self.repo_at_hash(event)),
+        event,
+        [event.payload.comment.body]);
     };
 
     self.gh_parse_CreateEvent = function(event) {
@@ -250,6 +261,10 @@
 
     self.remove_api_url = function remove_api_url(url) {
       return url.replace(GITHUB_API_BASE_URL, '').replace("repos/", '');
+    };
+
+    self.repo_at_hash = function(event) {
+      return event.repo.name + "@" + self.truncate(event.payload.comment.commit_id, 6, false);
     };
 
     self.repository = function(repo) {
