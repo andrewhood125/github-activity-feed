@@ -189,7 +189,7 @@
     };
 
     self.gh_parse_UnknownEvent = function(event) {
-      return self.gh_event('mega-octicon octicon-bug', event.type + " not yet implemented. Submit an <a href='https://github.com/andrewhood125/github-activity-feed/issues/new'>issue</a>!", event);
+      return self.gh_event('mega-octicon octicon-bug', event.type + " not yet implemented. Submit an <a href='https://github.com/andrewhood125/github-activity-feed/issues/new?title=" + event.type + "'>issue</a>!", event);
     };
 
     self.github_url = function(resource) {
