@@ -46,9 +46,16 @@
     self.commit_comment_url = function(comment) {
       return comment.html_url;
     };
+self.convert_api_url = function(url) { return self.github_url(self.remove_api_url(url));
+    };
 
-    self.convert_api_url = function(url) {
-      return self.github_url(self.remove_api_url(url));
+    self.details_GollumEvent = function(event) {
+      var details = [];
+      var pages = event.payload.pages;
+      for(var i = 0; i < pages.length; i++) {
+        details.push(pages[i].action + self.pad(pages[i].page_name));
+      }
+      return details;
     };
 
     self.details_IssueCommentEvent = function(event) {
@@ -95,8 +102,7 @@
     self.gh_parse_CommitCommentEvent = function(event) {
       return self.gh_event('mega-octicon octicon-comment-discussion',
         self.author_link(event) + self.pad("commented on commit") + self.link(self.commit_comment_url(event.payload.comment), self.repo_at_hash(event)),
-        event,
-        [event.payload.comment.body]);
+        event, [event.payload.comment.body]);
     };
 
     self.gh_parse_CreateEvent = function(event) {
@@ -128,6 +134,13 @@
       return self.gh_event('octicon octicon-git-branch',
         self.author_link(event) + " forked " + self.repository_link(event) + " to " + self.forkee_link(event.payload.forkee),
         event);
+    };
+
+    self.gh_parse_GollumEvent = function(event) {
+      return self.gh_event('mega-octicon octicon-book',
+        self.author_link(event) + self.pad("edited") + self.link(self.convert_api_url(event.repo.url) + "/wiki", self.repository(event.repo) + "@wiki"),
+        event,
+        self.details_GollumEvent(event));
     };
 
     self.gh_parse_IssueCommentEvent = function(event) {
