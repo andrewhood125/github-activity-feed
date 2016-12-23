@@ -46,13 +46,15 @@
     self.commit_comment_url = function(comment) {
       return comment.html_url;
     };
-self.convert_api_url = function(url) { return self.github_url(self.remove_api_url(url));
+
+    self.convert_api_url = function(url) {
+      return self.github_url(self.remove_api_url(url));
     };
 
     self.details_GollumEvent = function(event) {
       var details = [];
       var pages = event.payload.pages;
-      for(var i = 0; i < pages.length; i++) {
+      for (var i = 0; i < pages.length; i++) {
         details.push(pages[i].action + self.pad(pages[i].page_name));
       }
       return details;
@@ -145,7 +147,7 @@ self.convert_api_url = function(url) { return self.github_url(self.remove_api_ur
 
     self.gh_parse_IssueCommentEvent = function(event) {
       return self.gh_event('mega-octicon octicon-comment-discussion',
-        self.author_link(event) + " commened on pull request " + self.repository_link(event),
+        self.author_link(event) + " commented on issue " + self.issue_link(event),
         event,
         self.details_IssueCommentEvent(event));
     };
@@ -182,6 +184,12 @@ self.convert_api_url = function(url) { return self.github_url(self.remove_api_ur
         self.author_link(event) + " " + self.action(event.payload) + " pull request " + self.pull_request_link(event.payload.pull_request),
         event,
         self.details_PullRequestEvent(event));
+    };
+
+    self.gh_parse_PullRequestReviewCommentEvent = function(event) {
+      return self.gh_event('mega-octicon comment-discussion',
+        self.author_link(event) + " commented on pull request " + self.pull_request_link(event.payload.pull_request),
+        event, [event.payload.comment.body]);
     };
 
     self.gh_parse_PullRequestEvent_closed = function(event) {
@@ -286,6 +294,15 @@ self.convert_api_url = function(url) { return self.github_url(self.remove_api_ur
 
     self.repository_link = function(event) {
       return self.link(self.convert_api_url(event.repo.url), self.repository(event.repo));
+    };
+
+    self.issue = function(event) {
+      return self.repository(event.repo) + "#" + event.payload.issue.number;
+
+    };
+
+    self.issue_link = function(event) {
+      return self.link(self.convert_api_url(event.payload.issue.url), self.issue(event))
     };
 
     self.resolve_events = function(events, status) {
